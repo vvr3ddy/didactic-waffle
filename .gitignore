@@ -1,0 +1,166 @@
+# Xamarin.Android
+obj/
+bin/
+*.apk
+*.aab
+*.dll
+*.so
+*.aar
+*.keystore
+*.userprefs
+*.suo
+*.user
+*.webtest
+*.testsettings
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pyc
+*.pyo
+*.sbr
+*.suo
+*.swp
+*.tlb
+*.tlh
+*.tmp
+*.tmp_proj
+*.unsuccessfulbuild
+*.v12.suo
+*.v14.suo
+*.vc.db
+*.VC.opendb
+*.VC.db
+*.sln.docstates
+
+# Xamarin.iOS
+bin/
+obj/
+*.userprefs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Xamarin.Forms
+bin/
+obj/
+*.userprefs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# NuGet
+packages/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Xamarin Mac
+*.pidb
+*.mdb
+*.scc
+
+# Rider
+.idea/
+*.sln.iml
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.userprefs
+
