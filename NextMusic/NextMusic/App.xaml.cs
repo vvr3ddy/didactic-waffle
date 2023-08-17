@@ -9,7 +9,9 @@ namespace NextMusic
         public App ()
         {
             InitializeComponent();
-            MainPage = new MusicPlayerPage();
+            // Not updating MainPage = new AppShell(); will lead to an exception:
+            // 'Object reference not set to an instance of an object'
+            MainPage = new AppShell();
         }
 
         protected override void OnStart ()

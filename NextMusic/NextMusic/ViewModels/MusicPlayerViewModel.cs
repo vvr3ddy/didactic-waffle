@@ -1,24 +1,46 @@
 ﻿using System;
 using System.Windows.Input;
+using NextMusic.Models;
+using NextMusic.Services;
 using Xamarin.Forms;
 
 namespace NextMusic.ViewModels
 {
     public class MusicPlayerViewModel : BaseViewModel
     {
-        private bool _isPlaying;
+        private Song _song;
+        public Song Song
+        {
+            get => _song;
+            set
+            {
+                SetProperty(ref _song, value);
+                OnPropertyChanged(nameof(Song));
+            }
+        }
 
+        private bool _isPlaying;
         public bool IsPlaying
         {
             get => _isPlaying;
-            set => SetProperty(ref _isPlaying, value);
+            set
+            {
+                SetProperty(ref _isPlaying, value);
+                OnPropertyChanged(nameof(IsPlaying));
+            }
         }
 
         public ICommand TogglePlayCommand { get; }
-
+        public ICommand LoadPlaylistCommand { get; }
         public MusicPlayerViewModel()
         {
             TogglePlayCommand = new Command(TogglePlay);
+            LoadPlaylistCommand = new Command(LoadSongsAsync);
+        }
+
+        private async void LoadSongsAsync()
+        {
+            await Shell.Current.GoToAsync("//playlist");
         }
 
         private void TogglePlay()
