@@ -6,11 +6,11 @@ namespace NextMusic.Models
 {
 	public class Song
 	{
-		public string TrackTitle { get; set; }
-		public string AlbumTitle { get; set; }
-        public ImageSource AlbumArt { get; set; }
+		public string Title { get; set; }
+		public string AlbumInfo { get; set; }
 		public List<string> Artists { get; set; }
-        public TimeSpan Duration { get; set; }
-    }
+		public ImageSource AlbumArt { get; set; }
+		public TimeSpan Duration { get; set; }
+	}
 }
 

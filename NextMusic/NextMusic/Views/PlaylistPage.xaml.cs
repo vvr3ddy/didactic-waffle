@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace NextMusic.Views
 {	
-	public partial class MusicPlayerPage : ContentPage
+	public partial class PlaylistPage : ContentPage
 	{	
-		public MusicPlayerPage ()
+		public PlaylistPage ()
 		{
 			InitializeComponent ();
 		}

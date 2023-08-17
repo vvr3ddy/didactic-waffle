@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:NextMusic.ViewModels"
+    x:Class="NextMusic.Views.PlayerPage">
+    <ContentPage.BindingContext>
+        <vm:PlayerViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20">
+        
+        <!-- Album Art or Placeholder Image -->
+        <Image x:Name="AlbumArt" 
+               Source="placeholder_image.png"
+               WidthRequest="250"
+               HeightRequest="250"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+        
+        <!-- Track Title -->
+        <Label x:Name="TrackTitle" 
+               Text="Track Title"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+        
+        <!-- Artist Name -->
+        <Label x:Name="ArtistName" 
+               Text="Artist Name"
+               FontSize="16"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+        
+        <!-- Music Controls -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+            
+            <!-- Previous Track Button -->
+            <Button x:Name="PreviousButton" 
+                    Text="◄◄"
+                    FontSize="20"
+                    Command="{Binding PreviousCommand}"/>
+            
+            <!-- Play/Pause Button -->
+            <Button x:Name="PlayPauseButton" 
+                    Text="►"
+                    FontSize="20"
+                    Command="{Binding PlayPauseCommand}"/>
+            
+            <!-- Next Track Button -->
+            <Button x:Name="NextButton" 
+                    Text="►►"
+                    FontSize="20"
+                    Command="{Binding NextCommand}"/>
+        
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
+

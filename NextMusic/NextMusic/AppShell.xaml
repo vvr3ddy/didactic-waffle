@@ -6,12 +6,12 @@
     x:Class="NextMusic.AppShell">
     <TabBar>
         <Tab Title="Music Player">
-            <ShellContent ContentTemplate="{DataTemplate views:MusicPlayerPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:PlayerPage}" />
         </Tab>
 
-        <Tab Title="Music Files"
+        <Tab Title="Songs List"
              Route="playlist">
-            <ShellContent ContentTemplate="{DataTemplate views:MusicFilesListPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:PlaylistPage}" />
         </Tab>
     </TabBar>
 </Shell>
