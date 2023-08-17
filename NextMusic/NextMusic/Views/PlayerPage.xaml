@@ -8,7 +8,7 @@
         <vm:PlayerViewModel/>
     </ContentPage.BindingContext>
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20">
-        
+
         <!-- Album Art or Placeholder Image -->
         <Image x:Name="AlbumArt" 
                Source="placeholder_image.png"
@@ -16,42 +16,65 @@
                HeightRequest="250"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
-        
+
         <!-- Track Title -->
         <Label x:Name="TrackTitle" 
                Text="Track Title"
                FontSize="20"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
-        
+
         <!-- Artist Name -->
         <Label x:Name="ArtistName" 
                Text="Artist Name"
                FontSize="16"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
-        
+
+        <!-- Seeker/Progress Slider and Duration Labels -->
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Spacing="5">
+
+            <!-- Current and End Duration Labels -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label x:Name="CurrentDurationLabel" 
+               Text="{Binding CurrentPositionText}" 
+               HorizontalOptions="Start" 
+               VerticalOptions="Center" 
+               FontSize="14"/>
+
+                <Label x:Name="TotalDurationLabel" 
+               Text="{Binding TotalDurationText}" 
+               HorizontalOptions="End" 
+               VerticalOptions="Center" 
+               FontSize="14"/>
+            </StackLayout>
+
+            <!-- Seeker Slider -->
+            
+
+        </StackLayout>
+
         <!-- Music Controls -->
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
-            
+
             <!-- Previous Track Button -->
             <Button x:Name="PreviousButton" 
                     Text="◄◄"
                     FontSize="20"
                     Command="{Binding PreviousCommand}"/>
-            
+
             <!-- Play/Pause Button -->
             <Button x:Name="PlayPauseButton" 
                     Text="►"
                     FontSize="20"
                     Command="{Binding PlayPauseCommand}"/>
-            
+
             <!-- Next Track Button -->
             <Button x:Name="NextButton" 
                     Text="►►"
                     FontSize="20"
                     Command="{Binding NextCommand}"/>
-        
+
         </StackLayout>
 
     </StackLayout>
