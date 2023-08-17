@@ -30,10 +30,24 @@ namespace NextMusic.ViewModels
             }
         }
 
+        private string _playPauseButtonText;
+        public string PlayPauseButtonText
+        {
+            get => _playPauseButtonText;
+            set
+            {
+                SetProperty(ref _playPauseButtonText,value);
+                OnPropertyChanged(nameof(PlayPauseButtonText));
+            }
+        }
+
+
+
         public ICommand TogglePlayCommand { get; }
         public ICommand LoadPlaylistCommand { get; }
         public MusicPlayerViewModel()
         {
+            IsPlaying = false;
             TogglePlayCommand = new Command(TogglePlay);
             LoadPlaylistCommand = new Command(LoadSongsAsync);
         }
@@ -46,6 +60,7 @@ namespace NextMusic.ViewModels
         private void TogglePlay()
         {
             IsPlaying = !IsPlaying;
+            PlayPauseButtonText = IsPlaying ? "Pause" : "Play";
         }
     }
 }
