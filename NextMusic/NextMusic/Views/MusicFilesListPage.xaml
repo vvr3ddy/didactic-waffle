@@ -8,6 +8,15 @@
         <vm:MusicFilesListViewModel/>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical">
+        <ListView ItemsSource="{Binding MusicFiles}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding}" />
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
         
 
     </StackLayout>

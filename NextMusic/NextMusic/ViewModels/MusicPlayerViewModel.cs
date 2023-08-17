@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Newtonsoft.Json;
 using NextMusic.Models;
 using NextMusic.Services;
 using Xamarin.Forms;
 
 namespace NextMusic.ViewModels
 {
+    [QueryProperty(nameof(SelectSong), "selectedSong")]
+    [QueryProperty(nameof(RemainingSongs), "remainingSongs")]
     public class MusicPlayerViewModel : BaseViewModel
     {
-        private Song _song;
-        public Song Song
+        private Song _selectedSong;
+        public Song SelectedSong
         {
-            get => _song;
+            get => _selectedSong;
             set
             {
-                SetProperty(ref _song, value);
+                SetProperty(ref _selectedSong, value);
                 OnPropertyChanged(nameof(Song));
             }
         }
@@ -40,14 +45,37 @@ namespace NextMusic.ViewModels
                 OnPropertyChanged(nameof(PlayPauseButtonText));
             }
         }
-
-
+        //TODO: Delete this once we have proper implementation of song fetching
+        private string _selectSong;
+        public string SelectSong
+        {
+            get => _selectSong;
+            set
+            {
+                SetProperty(ref _selectSong, value);
+                OnPropertyChanged(nameof(SelectSong));
+            }
+        }
+        //TODO: Update the List once we have propert Song fetching functionality
+        private ObservableCollection<string> _remainingSongs;
+        public ObservableCollection<string> RemainingSongs
+        {
+            get => _remainingSongs;
+            set
+            {
+                SetProperty(ref _remainingSongs, value);
+                OnPropertyChanged(nameof(RemainingSongs));
+            }
+        }
 
         public ICommand TogglePlayCommand { get; }
         public ICommand LoadPlaylistCommand { get; }
+
         public MusicPlayerViewModel()
         {
+
             IsPlaying = false;
+            // Receive navigation parameters
             TogglePlayCommand = new Command(TogglePlay);
             LoadPlaylistCommand = new Command(LoadSongsAsync);
         }

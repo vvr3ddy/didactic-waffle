@@ -3,17 +3,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Newtonsoft.Json;
 using NextMusic.Services;
+using NextMusic.Views;
 using Xamarin.Forms;
 
 namespace NextMusic.ViewModels
 {
 	public class MusicFilesListViewModel: BaseViewModel
 	{
-		private IFileAccessService _fileAccessService;
-
 		public ObservableCollection<string> MusicFiles { get; set; }
-		public ICommand LoadMusicCommand { get; }
+		public ICommand SelectSongCommand { get; }
 
 		private bool _isBusy;
         public bool IsBusy {
@@ -27,22 +27,43 @@ namespace NextMusic.ViewModels
 
         public MusicFilesListViewModel()
 		{
-			_fileAccessService = DependencyService.Get<IFileAccessService>();
-			LoadMusicCommand = new Command(async () => await LoadMusicAsync());
+		
+			MusicFiles = new ObservableCollection<string>();
+			LoadMusicAsync();
+
+			SelectSongCommand = new Command<string>(async (selectedSong) => await SelectSongAsync(selectedSong));
 		}
 
-		private async Task LoadMusicAsync()
+		private async void LoadMusicAsync()
 		{
 			try
 			{
 				IsBusy = true;
-				MusicFiles.Clear();
-
-				var musicFiles = await _fileAccessService.GetMusicFilesAsync();
-				MusicFiles = new ObservableCollection<string>(musicFiles.ToList());
+				//TODO: Implement the Music file loading properly
+				
 			}catch(Exception ex)
 			{
 				Console.WriteLine($"Error: {ex.Message}");
+			}
+			finally
+			{
+				IsBusy = false;
+			}
+		}
+
+		private async Task SelectSongAsync(string selectedSong)
+		{
+			try
+			{
+				IsBusy = true;
+				var remainingSongs = MusicFiles.SkipWhile(song => song != selectedSong).ToList();
+
+				await Shell.Current.GoToAsync($"//{nameof(MusicPlayerPage)}?" +
+					$"selectedSong={selectedSong}" +
+					$"&remainingSongs={Uri.EscapeDataString(JsonConvert.SerializeObject(remainingSongs))}");
+			}catch(Exception ex)
+			{
+				Console.WriteLine($"Error:{ex.Message}");
 			}
 			finally
 			{
