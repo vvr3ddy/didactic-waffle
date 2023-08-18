@@ -39,8 +39,17 @@ namespace NextMusic.ViewModels
                 OnPropertyChanged(nameof(PlayPauseIcon));
             }
         }
-
-        public string PlayPauseIcon => IsPlaying ? "||" : "►";
+        public string PlayPauseIcon => IsPlaying ? "⏸︎" : "⏵︎";
+        //private string _playPauseIcon;
+        //public string PlayPauseIcon
+        //{
+        //    get => _playPauseIcon;
+        //    set
+        //    {
+        //        _playPauseIcon = value;
+        //        OnPropertyChanged(nameof(PlayPauseIcon));
+        //    }
+        //}
 
         public PlayerViewModel()
         {
@@ -52,7 +61,7 @@ namespace NextMusic.ViewModels
             PlayPauseCommand = new Command(ExecutePlayPause);
             NextCommand = new Command(ExecuteNext);
             PreviousCommand = new Command(ExecutePrevious);
-            SeekCommand = new Command<double>(ExecuteSeek);
+            //SeekCommand = new Command<double>(ExecuteSeek);
 
         }
 
@@ -61,6 +70,7 @@ namespace NextMusic.ViewModels
             if (IsPlaying)
             {
                 _musicPlayerService.Pause();
+                //PlayPauseIcon = "►";
                 IsPlaying = false;
             }
             else
@@ -74,6 +84,7 @@ namespace NextMusic.ViewModels
                     // Maybe play the first song in the playlist
                 }
                 IsPlaying = true;
+                //PlayPauseIcon = "⏸";
             }
         }
 

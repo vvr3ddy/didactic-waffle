@@ -59,19 +59,19 @@
 
             <!-- Previous Track Button -->
             <Button x:Name="PreviousButton" 
-                    Text="◄◄"
+                    Text="⏮︎"
                     FontSize="20"
                     Command="{Binding PreviousCommand}"/>
 
             <!-- Play/Pause Button -->
             <Button x:Name="PlayPauseButton" 
-                    Text="►"
+                    Text="{Binding PlayPauseIcon}"
                     FontSize="20"
                     Command="{Binding PlayPauseCommand}"/>
 
             <!-- Next Track Button -->
             <Button x:Name="NextButton" 
-                    Text="►►"
+                    Text="⏭︎"
                     FontSize="20"
                     Command="{Binding NextCommand}"/>
 
