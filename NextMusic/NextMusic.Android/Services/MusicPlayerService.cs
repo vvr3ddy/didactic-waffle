@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NextMusic.iOS.Services;
+using NextMusic.Droid.Services;
 using NextMusic.Models;
 using NextMusic.Services;
 using Xamarin.Forms;
@@ -8,7 +8,7 @@ using Android.Media;
 using System.Linq;
 
 [assembly: Dependency(typeof(MusicPlayerService))]
-namespace NextMusic.iOS.Services
+namespace NextMusic.Droid.Services
 {
 	public class MusicPlayerService : IMusicPlayerService
 	{
