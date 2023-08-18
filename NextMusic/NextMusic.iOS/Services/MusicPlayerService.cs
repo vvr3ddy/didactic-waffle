@@ -13,6 +13,12 @@ namespace NextMusic.iOS.Services
 {
     public class MusicPlayerService : IMusicPlayerService
     {
+        // Make it Singleton to ensure the same service persists across the session
+        private static readonly Lazy<MusicPlayerService> _instance =
+        new Lazy<MusicPlayerService>(() => new MusicPlayerService());
+
+        public static MusicPlayerService Instance => _instance.Value;
+
         private AVAudioPlayer _player;
         private List<Song> _playlist;
         private int _currentSongIndex = -1;
