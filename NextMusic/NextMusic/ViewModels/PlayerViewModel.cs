@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using NextMusic.Models;
 using NextMusic.Services;
@@ -18,6 +19,7 @@ namespace NextMusic.ViewModels
         public ICommand NextCommand { get; private set; }
         public ICommand PreviousCommand { get; private set; }
         public ICommand SeekCommand { get; private set; }
+        public ICommand PopulatePlaylistCommand { get; private set; }
 
         public Song CurrentSong
         {
@@ -67,6 +69,7 @@ namespace NextMusic.ViewModels
 
         private void ExecutePlayPause()
         {
+            
             if (IsPlaying)
             {
                 _musicPlayerService.Pause();

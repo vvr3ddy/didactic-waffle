@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using NextMusic.iOS.Services;
 using UIKit;
 
 namespace NextMusic.iOS
@@ -23,8 +24,8 @@ namespace NextMusic.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.DependencyService.Register<MusicPlayerService>();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
     }
