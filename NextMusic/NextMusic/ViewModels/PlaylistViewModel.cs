@@ -31,6 +31,18 @@ namespace NextMusic.ViewModels
         private async Task ExecuteFetchSongsCommand()
 		{
 			var selectedSongs = await _filePickerService.PickAudioFilesAsync();
+			if(Songs == null)
+			{
+				Songs = new ObservableCollection<Song>();
+				await Application.Current.MainPage.DisplayAlert("Error","No Songs Picked","OK");
+			}
+			else
+			{
+				foreach(var song in selectedSongs)
+				{
+					Songs.Add(song);
+				}
+			}
 			
 		}
     }

@@ -7,5 +7,21 @@
     <ContentPage.BindingContext>
         <vm:PlaylistViewModel/>
     </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical">
+        <Button Text="Add Songs"
+                Command="{Binding FetchSongs}"/>
+
+        <ListView ItemsSource="{Binding Songs}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}" Detail="{Binding Artist}"/>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
 </ContentPage>
 

@@ -1,6 +1,4 @@
-﻿using System;
-using NextMusic.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace NextMusic
 {
