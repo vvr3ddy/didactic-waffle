@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" gradientUnits="objectBoundingBox" gradientTransform="rotate(90)">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#2196F3" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="b" gradientUnits="objectBoundingBox" gradientTransform="rotate(90)">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#4CAF50" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="c" gradientUnits="objectBoundingBox" gradientTransform="rotate(90)">
+      <stop offset="0%" stop-color="#FFC107"/>
+      <stop offset="100%" stop-color="#FFC107" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="48" stroke="url(#a)" stroke-width="2" fill="none" stroke-dasharray="301.59">
+    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="100" cy="100" r="38" stroke="url(#b)" stroke-width="2" fill="none" stroke-dasharray="238.76">
+    <animateTransform attributeName="transform" type="rotate" from="360 100 100" to="0 100 100" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="100" cy="100" r="28" stroke="url(#c)" stroke-width="2" fill="none" stroke-dasharray="176.71">
+    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="1s" repeatCount="indefinite"/>
+  </circle>
+</svg>

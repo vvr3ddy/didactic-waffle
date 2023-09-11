@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="NewsApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:NewsApp.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Top Headlines">
+            <ShellContent
+                Title="Top Headlines"
+                ContentTemplate="{DataTemplate views:TopHeadlinesPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Search News">
+            <ShellContent
+                Title="Search News"
+                ContentTemplate="{DataTemplate views:SearchNewsPage}"
+                Route="SearchPage" />
+
+        </Tab>
+    </TabBar>
+
+
+</Shell>
+
