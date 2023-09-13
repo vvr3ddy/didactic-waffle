@@ -1,22 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsApp.Views.NotificationBannerView">
-    <Grid BackgroundColor="LightGray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+    <FlexLayout Direction="Column" 
+                JustifyContent="SpaceBetween" 
+                AlignItems="Center" 
+                BackgroundColor="LightGray">
         <Label Text="Would you like to receive notifications?"
-               VerticalOptions="CenterAndExpand"/>
-        <Button Text="Dismiss"
-                Command="{Binding DismissBannerCommand}"
-                Grid.Column="1"/>
+               VerticalOptions="CenterAndExpand"
+               FlexLayout.Grow="1"/>
 
-        <Button Text="Allow Notifications"
-            Command="{Binding AllowNotificationsCommand}"
-            HorizontalOptions="Center"
-            VerticalOptions="End"/>
-    </Grid>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Dismiss"
+                   Margin="5"
+                   FontSize="Micro"
+                   TextColor="DarkGray">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DismissBannerCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Allow Notifications"
+                   Margin="5"
+                   FontSize="Small">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AllowNotificationsCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </FlexLayout>
 </ContentView>
-
