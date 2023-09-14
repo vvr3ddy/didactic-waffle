@@ -53,6 +53,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.3.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -61,12 +62,14 @@
 	  <None Remove="Models\" />
 	  <None Remove="Resources\Splash\svgviewer-output.svg" />
 	  <None Remove="Services\" />
+	  <None Remove="Messages\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\" />
 	  <Folder Include="ViewModels\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Services\" />
+	  <Folder Include="Messages\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Splash\splash.svg" />

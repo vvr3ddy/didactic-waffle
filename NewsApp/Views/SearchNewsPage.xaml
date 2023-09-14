@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:NewsApp.ViewModels"
              xmlns:views="clr-namespace:NewsApp.Views"
              x:Class="NewsApp.Views.SearchNewsPage"
              Title="Search News">
     <ContentPage.BindingContext>
-        <vm:NewsListViewModel/>
+        <vm:SearchNewsViewModel/>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical">
-            <SearchBar Placeholder="Enter keywords (e.g Bitcoin)"
-                       x:Name="searchBar"
-                       FontAutoScalingEnabled="True"
-                       />
-        
-            <views:NewsListView/>
-        
+        <SearchBar ios:SearchBar.SearchBarStyle="Minimal"
+                   Placeholder="Enter keywords (e.g Bitcoin)"
+                   x:Name="searchBar"
+                   FontAutoScalingEnabled="True"
+                   TextColor="{AppThemeBinding Dark=White}"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+        <!--Call the NewsListView to display the searched news articles-->
+        <views:NewsListView/>
     </StackLayout>
 </ContentPage>

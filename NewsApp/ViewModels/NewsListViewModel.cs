@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.Messaging;
+using NewsApp.Messages;
 using NewsApp.Models;
 using NewsApp.Services;
 using NewsApp.Views;
@@ -30,12 +32,21 @@ namespace NewsApp.ViewModels
 
             ReadStoryCommand = new Command<string>(async (url) => await ReadStory(url));
             LoadArticlesAsync();
+
+            
         }
 
         protected async Task LoadArticlesAsync()
         {
             NewsItem.Root news = await _newsAPIService.GetNewsItemAsync();
-            NewsArticles = new ObservableCollection<NewsItem.Article>(news.Articles);
+            //NewsArticles = new ObservableCollection<NewsItem.Article>(news.Articles);
+            string messageItem = string.Empty;
+            WeakReferenceMessenger.Default.Register<UpdateNewsListMessage>(this, (recipient, message) =>
+            {
+                NewsArticles = new ObservableCollection<NewsItem.Article>(message.NewsArticles);
+                messageItem = message.Source;
+            });
+            await Application.Current.MainPage.DisplayAlert("Receiver", messageItem, "OK");
         }
 
         protected async Task ReadStory(string url)

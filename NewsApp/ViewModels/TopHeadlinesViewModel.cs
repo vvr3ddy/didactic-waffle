@@ -1,5 +1,9 @@
-﻿using System;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using NewsApp.Messages;
+using NewsApp.Models;
+using NewsApp.Services;
 
 namespace NewsApp.ViewModels
 {
@@ -8,6 +12,9 @@ namespace NewsApp.ViewModels
         private bool _isBannerVisible;
         private bool _hasContentLoaded;
         private string _loadRefreshNews;
+        private INewsAPIService _newsAPIService;
+
+        private ObservableCollection<NewsItem.Article> _newsArticles;
 
         public bool IsBannerVisible
         {
@@ -27,6 +34,12 @@ namespace NewsApp.ViewModels
             set => SetProperty(ref _loadRefreshNews, value);
         }
 
+        public ObservableCollection<NewsItem.Article> NewsArticles
+        {
+            get => _newsArticles;
+            set => SetProperty(ref _newsArticles, value);
+        }
+
         public ICommand LoadNewsArticlesCommand { get; }
         public ICommand DismissBannerCommand { get; }
         public ICommand AllowNotificationsCommand { get; }
@@ -36,17 +49,38 @@ namespace NewsApp.ViewModels
             IsBannerVisible = true; // Banner is visible by default
             HasContentLoaded = false;
             LoadRefreshNews = "Load News";
+            _newsAPIService = NewsAPIService.Instance;
+            NewsArticles = new ObservableCollection<NewsItem.Article>();
 
-            LoadNewsArticlesCommand = new Command(LoadArticles);
+
+            LoadNewsArticlesCommand = new Command(async () => await LoadArticles());
             DismissBannerCommand = new Command(DismissBanner);
             AllowNotificationsCommand = new Command(AllowNotifications);
         }
 
-        private void LoadArticles()
+        private async Task LoadArticles()
         {
-            // Your existing logic for loading articles
-            HasContentLoaded = true;
-            LoadRefreshNews = "Refresh News";
+            if (IsBusy) return;
+            IsBusy = true;
+
+            try
+            {
+                NewsArticles.Clear();
+                NewsItem.Root newsContent = await _newsAPIService.GetNewsItemAsync();
+                NewsArticles = new ObservableCollection<NewsItem.Article>(newsContent.Articles);
+                WeakReferenceMessenger.Default.Send(new UpdateNewsListMessage(NewsArticles, "TopHeadlines"));
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"{ex.Message}", "OK");
+            }
+            finally
+            {
+                HasContentLoaded = true;
+                LoadRefreshNews = "Refresh News";
+                IsBusy = false;
+            }
+            
         }
 
         private void DismissBanner()
