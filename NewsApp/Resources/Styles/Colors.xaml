@@ -4,9 +4,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="Primary">#8B4513</Color> <!-- Dark Brown for Headers -->
+    <Color x:Key="Secondary">#F5DEB3</Color> <!-- Wheat for Background -->
+    <Color x:Key="Tertiary">#A0522D</Color> <!-- Sienna for Accents -->
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Gray100">#E1E1E1</Color>
@@ -17,6 +17,13 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+
+    <!-- Newspaper Theme Colors -->
+    <Color x:Key="NewsPaperBackground">#FAF0E6</Color> <!-- Sepia Background -->
+    <Color x:Key="NewsPaperText">#4B3D33</Color> <!-- Dark Brown Text -->
+    <Color x:Key="NewsPaperAccent">#A39480</Color> <!-- Cream Accent -->
+    
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
@@ -30,6 +37,12 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <!-- Newspaper Theme Solid Color Brushes -->
+    <SolidColorBrush x:Key="NewsPaperBackgroundBrush" Color="{StaticResource NewsPaperBackground}"/>
+    <SolidColorBrush x:Key="NewsPaperTextBrush" Color="{StaticResource NewsPaperText}"/>
+    <SolidColorBrush x:Key="NewsPaperAccentBrush" Color="{StaticResource NewsPaperAccent}"/>
+    
 
     <Color x:Key="Yellow100Accent">#F7B548</Color>
     <Color x:Key="Yellow200Accent">#FFD590</Color>
