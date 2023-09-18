@@ -1,42 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:NoteKeeper.ViewModels"
              x:Class="NoteKeeper.Views.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical"
+                 Padding="10"
+                 BackgroundColor="{StaticResource BackgroundColor}">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <Label Text="No Notes Saved"
+               IsVisible="{Binding IsNotesEmpty}"   
+               HorizontalOptions="CenterAndExpand"
+               TextColor="{StaticResource SecondaryTextColor}"/>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+        <CollectionView ItemsSource="{Binding ExistingNotes}">
+            <CollectionView.Triggers>
+                <DataTrigger TargetType="CollectionView"
+                             Binding="{Binding IsNotesEmpty}"
+                             Value="False">
+                    <Setter Property="IsVisible" Value="True" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                </DataTrigger>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            </CollectionView.Triggers>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{StaticResource SurfaceColor}">
+                        <Grid
+                            Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="1"
+                                         Spacing="10"
+                                         Orientation="Vertical">
+                                <Label Text="{Binding Title}"
+                                       TextColor="{StaticResource SecondaryTextColor}"/>
+                                <WebView>
+                                    <WebView.Source>
+                                        <HtmlWebViewSource Html="{Binding FormattedContent}" />
+                                    </WebView.Source>
+                                </WebView>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            </CollectionView.ItemTemplate>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        </CollectionView>
+    </StackLayout>
 
 </ContentPage>
 
