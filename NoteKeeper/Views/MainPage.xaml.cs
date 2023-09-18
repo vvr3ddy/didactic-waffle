@@ -1,4 +1,4 @@
-﻿namespace NoteKeeper;
+﻿namespace NoteKeeper.Views;
 
 public partial class MainPage : ContentPage
 {
