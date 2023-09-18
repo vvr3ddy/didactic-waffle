@@ -75,6 +75,8 @@
     <Color x:Key="DividerColor">#BDBDBD</Color>
 
     <!-- Background Colors -->
-    <Color x:Key="BackgroundColor">#FFFFFF</Color>
-    <Color x:Key="SurfaceColor">#FFFFFF</Color>
+    <Color x:Key="BackgroundColor">#121212</Color>
+    <Color x:Key="SurfaceColor">#1E1E1E</Color>
+
+
 </ResourceDictionary>
