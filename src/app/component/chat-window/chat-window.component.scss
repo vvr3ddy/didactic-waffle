@@ -1,0 +1,66 @@
+.chat-window-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #121212; // Or the specific background color you want
+    color: white;
+  
+    .logo {
+      // Add styles for the logo
+    }
+  
+    .welcome-message {
+      margin: 20px;
+      h1 {
+        text-align: center;
+      }
+    }
+  
+    .example-questions {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      button {
+        margin: 5px;
+        // Additional button styling
+      }
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); // 2 columns of equal width
+      grid-gap: 10px; // Adjust the gap between buttons as needed
+    }
+    
+  
+    .chat-input-container {
+      position: relative;
+      display: grid;
+      align-items: center;
+      width: 512px;
+    }
+    
+    .chat-input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      width: 100%; /* Adjust width as necessary */
+      padding-right: 40px; /* Make room for the button */
+    }
+    
+    .chat-send-button {
+      position: absolute;
+      right: 5px; /* Adjust as necessary for exact positioning */
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    
+    .send-icon {
+      width: 24px; /* Adjust as necessary */
+      height: 24px; /* Adjust as necessary */
+    }
+  }
+  

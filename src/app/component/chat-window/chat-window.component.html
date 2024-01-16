@@ -1,0 +1,32 @@
+<div class="chat-window-container">
+    <div class="logo">
+      <!-- Logo goes here -->
+      <img src="assets/images/logo.png" />
+    </div>
+    <div class="welcome-message">
+      <h1>How can I help you today?</h1>
+    </div>
+    <div class="chat-input-container">
+      <input
+        type="text"
+        class="chat-input"
+        placeholder="Start typing here..."
+        [(ngModel)]="selectedQuestion">
+      <button class="chat-send-button">
+        <img src="path_to_send_icon.png" alt="Send" class="send-icon">
+      </button>
+    </div>
+    <div class="example-questions">
+      <!-- Example questions as buttons or links -->
+      <div class="button-grid">
+        <button
+          *ngFor="let question of exampleQuestions"
+          class="btn btn-outline-light"
+          (click)="selectQuestion(question)">
+        {{question}}
+        </button>
+      </div>
+      <!-- Repeat for other example questions -->
+    </div>
+  </div>
+  
