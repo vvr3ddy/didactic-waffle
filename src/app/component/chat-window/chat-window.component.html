@@ -1,32 +1,44 @@
 <div class="chat-window-container">
-    <div class="logo">
-      <!-- Logo goes here -->
-      <img src="assets/images/logo.png" />
-    </div>
-    <div class="welcome-message">
-      <h1>How can I help you today?</h1>
-    </div>
-    <div class="chat-input-container">
-      <input
-        type="text"
-        class="chat-input"
-        placeholder="Start typing here..."
-        [(ngModel)]="selectedQuestion">
-      <button class="chat-send-button">
-        <img src="path_to_send_icon.png" alt="Send" class="send-icon">
-      </button>
-    </div>
-    <div class="example-questions">
-      <!-- Example questions as buttons or links -->
-      <div class="button-grid">
-        <button
-          *ngFor="let question of exampleQuestions"
-          class="btn btn-outline-light"
-          (click)="selectQuestion(question)">
-        {{question}}
-        </button>
-      </div>
-      <!-- Repeat for other example questions -->
+  <div class="logo" *ngIf="showAreaElement">
+    <!-- Logo goes here -->
+    <img src="assets/images/logo.png" />
+  </div>
+  <div class="welcome-message" *ngIf="showAreaElement">
+    <h1>How can I help you today?</h1>
+  </div>
+
+  <!-- Container for chat messages -->
+  <div class="chat-messages">
+    <div *ngFor="let message of chatMessages"
+      [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
+      <span class="message-text">{{ message.content }}</span>
+      <span class="timestamp">{{ message.timestamp | date: 'hh:mm a' }}</span>
     </div>
   </div>
-  
+
+
+  <!-- Input area with ngModel (use *ngIf) -->
+  <div class="chat-input-container" *ngIf="showAreaElement">
+    <input type="text" class="chat-input" placeholder="Start typing here..." [(ngModel)]="selectedQuestion">
+    <button class="chat-send-button" (click)="sendUserMessage()">
+      <img src="path_to_send_icon.png" alt="Send" class="send-icon">
+    </button>
+  </div>
+
+  <!-- Input area with ngModel -->
+  <div class="chat-input-container" *ngIf="!showAreaElement">
+    <input type="text" class="chat-input" placeholder="Start typing here..." [(ngModel)]="userInput">
+    <button class="chat-send-button" (click)="sendUserMessage()">
+      <img src="path_to_send_icon.png" alt="Send" class="send-icon">
+    </button>
+  </div>
+  <!-- Example questions as buttons or links (use *ngIf) -->
+  <div class="example-questions" *ngIf="showAreaElement">
+    <div class="button-grid">
+      <button *ngFor="let question of exampleQuestions" class="btn btn-outline-light"
+        (click)="selectQuestion(question)">
+        {{ question }}
+      </button>
+    </div>
+  </div>
+</div>

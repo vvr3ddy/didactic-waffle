@@ -1,66 +1,140 @@
 .chat-window-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #121212; // Or the specific background color you want
-    color: white;
-  
-    .logo {
-      // Add styles for the logo
-    }
-  
-    .welcome-message {
-      margin: 20px;
-      h1 {
-        text-align: center;
-      }
-    }
-  
-    .example-questions {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-      button {
-        margin: 5px;
-        // Additional button styling
-      }
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212; // Or the specific background color you want
+  color: white;
+  width: 80%;
+  margin-left: auto;
 
-    .button-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); // 2 columns of equal width
-      grid-gap: 10px; // Adjust the gap between buttons as needed
-    }
-    
-  
-    .chat-input-container {
-      position: relative;
-      display: grid;
-      align-items: center;
-      width: 512px;
-    }
-    
-    .chat-input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      width: 100%; /* Adjust width as necessary */
-      padding-right: 40px; /* Make room for the button */
-    }
-    
-    .chat-send-button {
-      position: absolute;
-      right: 5px; /* Adjust as necessary for exact positioning */
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-    
-    .send-icon {
-      width: 24px; /* Adjust as necessary */
-      height: 24px; /* Adjust as necessary */
+  .logo {
+    // Add styles for the logo
+  }
+
+  .welcome-message {
+    margin: 20px;
+
+    h1 {
+      text-align: center;
     }
   }
-  
+
+  .example-questions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    button {
+      margin: 5px;
+      // Additional button styling
+    }
+  }
+
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // 2 columns of equal width
+    grid-gap: 10px; // Adjust the gap between buttons as needed
+  }
+
+
+  .chat-input-container {
+    position: relative;
+    display: grid;
+    align-items: center;
+    width: 512px;
+  }
+
+  .chat-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 100%;
+    /* Adjust width as necessary */
+    padding-right: 40px;
+    /* Make room for the button */
+  }
+
+  .chat-send-button {
+    position: absolute;
+    right: 5px;
+    /* Adjust as necessary for exact positioning */
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .send-icon {
+    width: 24px;
+    /* Adjust as necessary */
+    height: 24px;
+    /* Adjust as necessary */
+  }
+
+  /* Styles for user messages (right-aligned) */
+  .user-message {
+    text-align: right !important;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+    width: max-content;
+    align-self: flex-end;
+    max-width: 80%;
+    padding: 4px 8px 16px 8px; /* Adjust padding to incorporate spacing for timestamp */
+    word-wrap: break-word;
+    position: relative;
+    border-bottom-right-radius: 0;
+    display: flex;
+    /* Display as flex to align timestamp */
+    flex-direction: row;
+    /* Reverse the order of timestamp and message */
+    justify-content: flex-start;
+    /* Align timestamp to the right */
+  }
+
+  /* Styles for bot messages (left-aligned) */
+  .bot-message {
+    text-align: left !important;
+    background-color: #28A745;
+    color: white;
+    border-radius: 10px;
+    margin: 5px;
+    width: max-content;
+    align-self: flex-start;
+    max-width: 80%;
+    padding: 4px 8px 16px 8px; /* Adjust padding to incorporate spacing for timestamp */    
+    word-wrap: break-word;
+    position: relative;
+    border-bottom-left-radius: 0;
+    display: flex;
+    /* Display as flex to align timestamp */
+    flex-direction: row;
+    /* Keep the order of timestamp and message */
+    justify-content: flex-start;
+    /* Align timestamp to the left */
+  }
+
+  /* Timestamp for messages */
+.timestamp {
+  font-size: 10px; /* Adjust font size to "micro" size */
+  color: #ccc;
+  padding: 4px 8px; /* Add padding to create spacing around timestamp */
+  position: absolute; /* Position absolutely within the message container */
+  bottom: -4px; /* Move timestamp below the message */
+  left: 0; /* Align timestamp to the left edge of the message */
+  right: 0; /* Align timestamp to the right edge of the message */
+  text-align: right; /* Center the timestamp horizontally */
+}
+
+
+  /* Container for chat messages */
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+
+}
