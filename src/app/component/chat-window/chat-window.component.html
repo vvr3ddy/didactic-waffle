@@ -26,7 +26,7 @@
   </div>
 
   <!-- Input area with ngModel -->
-  <div class="chat-input-container" *ngIf="!showAreaElement">
+  <div class="chat-input-container-bottom" *ngIf="!showAreaElement">
     <input type="text" class="chat-input" placeholder="Start typing here..." [(ngModel)]="userInput">
     <button class="chat-send-button" (click)="sendUserMessage()">
       <img src="path_to_send_icon.png" alt="Send" class="send-icon">
